@@ -15,7 +15,7 @@ function initCarousel() {
     carouselInnerEl.style.transform = `translateX(-${offset}px)`;
   };
 
-  const updateCarouselArrowVisibility = () => {
+  const updateCarouselArrowsVisibility = () => {
     if (currentSlideNumber === 1) {
       hideEl(carouselArrowLeftEl);
     } else {
@@ -30,7 +30,7 @@ function initCarousel() {
   };
 
   const updateCarouselState = () => {
-    updateCarouselArrowVisibility();
+    updateCarouselArrowsVisibility();
     updateCarouselInnerOffset();
   };
 
