@@ -60,16 +60,12 @@ export default class Modal {
   }
 
   setTitle(text) {
-    if (this._modalEL) {
-      this._titleEl.textContent = text;
-    }
+    this._titleEl.textContent = text;
   }
 
   setBody(node) {
-    if (this._modalEL) {
-      this._bodyEl.innerHTML = '';
-      this._bodyEl.append(node);
-    }
+    this._bodyEl.innerHTML = '';
+    this._bodyEl.append(node);
   }
 
   #onModalCloseElClick(event) {
