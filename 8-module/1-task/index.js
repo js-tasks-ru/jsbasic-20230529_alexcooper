@@ -1,7 +1,7 @@
 import createElement from '../../assets/lib/create-element.js';
 
 export default class CartIcon {
-  _initialTopCoordinates = 0;
+  _initialTopCoordinates = 50;
 
   constructor() {
     this.render();
@@ -16,7 +16,6 @@ export default class CartIcon {
   update(cart) {
     if (!cart.isEmpty()) {
       this.elem.classList.add('cart-icon_visible');
-      this._initialTopCoordinates = this.elem.getBoundingClientRect().top;
 
       this.elem.innerHTML = `
         <div class="cart-icon__inner">
