@@ -4,6 +4,7 @@ export default class RibbonMenu {
   elem = null;
   categories = [];
   currentMenuItemEl = null;
+  currentCategoryId = null;
   arrowLeftEl;
   arrowRightEl;
   innerEl;
@@ -13,6 +14,11 @@ export default class RibbonMenu {
 
     const menu = this.#render();
     this.elem = menu;
+
+    // Make first menu item active
+    const firstMeniItemElement = menu.querySelector('.ribbon__item');
+    firstMeniItemElement.classList.add('ribbon__item_active');
+    this.currentMenuItemEl = firstMeniItemElement;
 
     this.arrowLeftEl = menu.querySelector('.ribbon__arrow_left');
     this.arrowRightEl = menu.querySelector('.ribbon__arrow_right');
@@ -89,14 +95,14 @@ export default class RibbonMenu {
   }
 
   #onMenuItemClick(event) {
+    event.preventDefault();
+
     const menuItemEl = event.target;
     const menuItemClass = '.ribbon__item';
     const activeMenuItemClassName = 'ribbon__item_active';
 
     if (menuItemEl.closest(menuItemClass) && menuItemEl !== this.currentMenuItemEl) {
       const categoryID = menuItemEl.dataset.id;
-
-      event.preventDefault();
 
       if (this.currentMenuItemEl) {
         this.currentMenuItemEl.classList.remove(activeMenuItemClassName);
@@ -109,6 +115,7 @@ export default class RibbonMenu {
       }));
 
       this.currentMenuItemEl = menuItemEl;
+      this.currentCategoryId = categoryID;
     }
   }
 }
