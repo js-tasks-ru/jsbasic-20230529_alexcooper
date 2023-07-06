@@ -37,7 +37,7 @@ export default class ProductCard {
   }
 
   #onAddProductClick(event) {
-    if (event.target.className !== 'card__button') {
+    if (!event.target.closest('.card__button')) {
       return;
     }
 
